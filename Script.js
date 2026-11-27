@@ -21,9 +21,20 @@ let weatherData = {
     }
 };
 function searchWeather() {
-    let city = document.getElementById("city").value;
+    let city = document.getElementById("city").value.toLowerCase();
 
-    document.getElementById("location").innerHTML = city;
+    if (weatherData[city]) {
+        document.getElementById("location").innerHTML = city.toUpperCase();
 
-    alert("Searching weather for " + city);
+        document.getElementById("temperature").innerHTML = weatherData[city].temperature;
+
+        document.getElementById("condition").innerHTML = weatherData[city].condition;
+
+        document.getElementById("humidity").innerHTML = weatherData[city].humidity;
+
+        document.getElementById("wind").innerHTML = weatherData[city].wind;
+
+    } else {
+        alert("City not found!");
+    }
 }
